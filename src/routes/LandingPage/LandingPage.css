@@ -1,119 +1,210 @@
+.landing-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  max-width: 100%;
+  min-width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+}
+
+.profile-img {
+  position: absolute;
+  margin: auto;
+  /* height of the nav bar = 59px */
+  top: 59px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  z-index: 99;
+}
+
+.split {
+  width: 100%;
+  transition: width 1.5s;
+}
+
 .left-side {
-  background-color: #CD2E3A;
-  height: 94vh;
-  width: 50%;
-  transition: 0.8s;
-  text-align: center;
-  padding-top: 60px;
+  background-color: salmon;
+  cursor: pointer;
+}
+
+.left-side:hover {
+  width: 150%;
+}
+
+.right-side {
+  background-color: #fdf9ec;
+  cursor: pointer;
+}
+
+.right-side:hover {
+  width: 150%;
+}
+
+.split > h2 {
+  position: absolute;
+  margin: 0.5em;
+  font-size: 3rem;
+  opacity: 0.6;
+  transition: 1s;
+  font-weight: 400;
 }
 
 .about-tag {
-  font-size: 4em;
-  color: white;
-  transition: 0.8s;
-  opacity: 0.6;
-}
-.break {
-  margin-bottom: 170px;
+  min-width: min-content;
+  text-align: center;
+  color: #fdf9ec;
+  animation: slideOut-leftside 1.5s forwards;
 }
 
-.left-side > .adjectives {
-  display: none;
+.left-side:hover .about-tag {
+  opacity: 1;
+  animation: slideIn-leftside 1.5s forwards;
 }
 
-.left-side:hover > .adjectives {
-  display: flex;
-  animation: slow 2s ease forwards;
-  font-size: 7rem;
-  margin-left: 20px;
-  padding-bottom: 5px;
-  color: white;
-}
-
-.right-side > .adjective {
-  display: none;
-}
-
-.right-side:hover > .adjective {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 7rem;
-  padding-bottom: 5px;
+.project-tag {
+  min-width: min-content;
+  min-width: 10rem;
+  text-align: center;
   color: black;
-  margin-right: 20px;
+  animation: slideOut-rightside 1.5s forwards;
+}
+
+.right-side:hover .project-tag {
+  opacity: 1;
+  animation: slideIn-rightside 1.5s forwards;
+}
+
+.adjs {
+  height: 95vh;
+  display: flex;
+  width: min-content;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: bolder;
+  letter-spacing: 3px;
+}
+
+.adjective {
+  opacity: 0.2;
+  transition: 1.5s;
   position: relative;
-  right: 0%;
-  animation: slow 2s ease-out ;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-name: slidein-right;
 }
 
-.breaks {
-  margin-bottom: 270px;
+.adjective:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: #fdf9ec;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.5s ease-in-out;
 }
 
+.creator-container > .adjective:before {
+  background-color: salmon;
+}
+
+.adjective:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.adjective > .dot {
+  font-weight: 900;
+  font-size: 5rem;
+}
+
+.adjs:hover .dot {
+  color: #72ecfa;
+}
+
+.developer-container {
+  display: flex;
+  margin-left: 1em;
+  color: #fdf9ec;
+}
+
+.left-side:hover .adjective {
+  opacity: 1;
+  animation: slow 2s ease forwards;
+}
+
+.creator-container {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: auto 1em auto auto;
+}
+
+.creator-container > .adjective {
+  margin: 0;
+}
+
+.right-side:hover .adjective {
+  opacity: 1;
+  animation: slow 2s ease backwards;
+}
 
 @keyframes slow {
   from {
     max-width: 0rem;
   }
   to {
-    max-width: 18rem;
+    max-width: 30rem;
   }
 }
 
-.left-side:hover .about-tag {
-  transition: 0.8s;
-  opacity: 0.2;
+@keyframes slideIn-leftside {
+  from {
+    left: 0;
+    right: 100%;
+  }
+  to {
+    left: 0;
+    right: 45%;
+  }
 }
 
-.right-side {
-  background-color: #FDF9EC;
-  height: 94vh;
-  width: 50%;
-  text-align: center;
-  transition: 0.8s;
-  position: relative;
+@keyframes slideOut-leftside {
+  from {
+    left: 0;
+    right: 45%;
+  }
+  to {
+    left: 0;
+    right: 100%;
+  }
 }
 
-.right-side .project-tag {
-  font-size: 4em;
-  color: black;
-  opacity: 0.6;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0 0 60px 10px;
+@keyframes slideOut-rightside {
+  from {
+    right: 21%;
+  }
+  to {
+    right: 0;
+  }
 }
 
-.right-side:hover .project-tag {
-  transition: 0.8s;
-  opacity: 0.2;
-}
-
-.left-side:hover, .right-side:hover {
-  width: 80%;
-  transition: 0.8s;
-  cursor: pointer;
-}
-
-.landing-container {
-  padding-left: 20px;
-  padding-right: 20px;
-  display: flex;
-}
-
-.profile-img {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40vh;
-  left: 0;
-  right: 0;
-  top: 0;
-  border-radius: 50%;
-  max-width: 220px;
-  max-height: 220px;
-  z-index: 100;
+@keyframes slideIn-rightside {
+  from {
+    right: 0;
+  }
+  to {
+    right: 21%;
+  }
 }
