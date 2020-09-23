@@ -1,5 +1,6 @@
 .left-side {
-  background-color: #CD2E3A;
+  /* #CD2E3A */
+  background-color: #db6363;
   height: 94vh;
   width: 50%;
   transition: 0.8s;
@@ -23,7 +24,7 @@
 
 .left-side:hover > .adjectives {
   display: flex;
-  animation: slow 2s ease forwards;
+  animation: reveal-left 2s ease forwards;
   font-size: 7rem;
   margin-left: 20px;
   padding-bottom: 5px;
@@ -37,30 +38,35 @@
 .right-side:hover > .adjective {
   display: flex;
   justify-content: flex-end;
+  animation: reveal-right 2s ease forwards;
   font-size: 7rem;
   padding-bottom: 5px;
   color: black;
   margin-right: 20px;
-  position: relative;
-  right: 0%;
-  animation: slow 2s ease-out ;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-name: slidein-right;
 }
 
 .breaks {
-  margin-bottom: 270px;
+  margin-bottom: 280px;
 }
 
-
-@keyframes slow {
+@keyframes reveal-right {
   from {
-    max-width: 0rem;
+    clip-path: inset(0 0 0 100%);
   }
   to {
-    max-width: 18rem;
+    clip-path: inset(0 0 0 0);
   }
 }
+
+@keyframes reveal-left {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 
 .left-side:hover .about-tag {
   transition: 0.8s;
@@ -76,7 +82,7 @@
   position: relative;
 }
 
-.right-side .project-tag {
+.project-tag {
   font-size: 4em;
   color: black;
   opacity: 0.6;
